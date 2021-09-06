@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+       var arr=[]
+       function savedata(){
+           var a = confirm("DO U WANT TO ADD this book to cart")
+        if(a==true){
+           var data = [
+        document.getElementById("bname").value,  document.getElementById("author").value,
+        document.getElementById("price").value, document.getElementById("qty").value,]
+
+        arr.push(data)
+        localStorage.setItem("data",JSON.stringify(arr))
+
+        document.getElementById("bname").value = ""
+        document.getElementById("author").value =""
+        document.getElementById("price").value=""
+        document.getElementById("qty").value=""
+           }
+           else{
+               return false
+           }
+
+       }
+    </script>
+    <style>
+        body{
+            background-image: url("a.jfif");
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark"> 
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="library.html">HOME</a>
+          </li>
+        </ul>
+      </nav>
+    <div class="container" style="width: 700px;">
+        <h2>ADD BOOK</h2>
+        <form>
+            <div class="form-group">
+                <label for="fname">BookName:</label>
+                <input type="text" class="form-control" id="bname" placeholder="Enter book name" name="bname">
+            </div>
+
+            <div class="form-group">
+                <label for="author">AuthorName</label>
+                <input type="text" class="form-control" id="author" placeholder="Enter authors name" name="author">
+            </div>
+            
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" placeholder="Enter price" name="price">
+            </div>
+            <div class="form-group">
+                <label for="qty">Quantity:</label>
+                <input type="number" class="form-control" id="qty" placeholder="Enter Quantity" name="qty">
+            </div>
+            <input type="button" class="btn btn-primary" onclick="savedata()" value="Add to cart">
+            
+        </form>
+</body>
+
+</html>

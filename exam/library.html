@@ -1,0 +1,105 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       function viewdata(){
+           document.getElementById("note").innerHTML=""
+          var data = JSON.parse(localStorage.getItem("data"))
+
+          var list=document.getElementById("note")
+
+          var h4=document.createElement("h4")
+          h4.innerHTML="CART ITEMS"
+          list.appendChild(h4)
+
+          var tab =document.createElement("table")
+          tab.setAttribute("style","height:150px;width:100%")
+          var tr=document.createElement("tr")
+          //tr.setAttribute()
+          var th1=document.createElement("th")
+          th1.innerHTML="BOOKNAME"
+          tr.appendChild(th1)
+
+          var th2=document.createElement("th")
+          th2.innerHTML="AUTHOR"
+          tr.appendChild(th2)
+
+          var th3=document.createElement("th")
+          th3.innerHTML="PRICE"
+          tr.appendChild(th3)
+
+          var th4=document.createElement("th")
+          th4.innerHTML="QUANTITY"
+          tr.appendChild(th4)
+
+          tab.appendChild(tr)
+
+          for(var i=0 ; i< data.length;i++){
+
+            var tr=document.createElement("tr")
+            tr.setAttribute("style","border-style:solid")
+            for (var j=0;j<4;j++){
+                var td=document.createElement("td")
+                td.innerHTML=data[i][j]
+                tr.appendChild(td)
+
+            }
+            tab.appendChild(tr)
+          }
+          list.appendChild(tab)
+
+       }
+    </script>
+    <style>
+        table,th{
+            border-style: solid ;
+            background-color: rgb(19, 161, 226);
+            text-align: center;
+        }
+        td{
+            border-style: solid;
+            background-color: rgba(238, 236, 235, 0.932);
+        }
+        .nav-item:hover{
+            background-color: rgb(128, 191, 233);
+        }
+        body{
+            background-image: url("a.jfif");
+        }
+        h1{
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="addbook.html">Purchase</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:viewdata()">Viewcart</a>
+          </li>
+          
+        </ul>
+      </nav>
+
+      <h1>BUY BOOKS</h1>
+      
+      <div id="note">
+
+      </div>
+
+</body>
+
+</html>
